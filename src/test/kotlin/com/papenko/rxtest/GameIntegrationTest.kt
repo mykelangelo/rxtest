@@ -15,17 +15,17 @@ import org.springframework.test.web.servlet.get
 @SpringBootTest
 @AutoConfigureMockMvc
 class GameIntegrationTest @Autowired constructor(
-    var mockMvc: MockMvc,
-    var repo: GameStateRepository
+    val mockMvc: MockMvc,
+    val repo: GameStateRepository
 ) {
     companion object {
         @BeforeAll
         @JvmStatic
         internal fun beforeAll() {
-            assertEquals(1, Constants.GAME_STARTED)
-            assertThat(Constants.GAME_NOT_STARTED).isLessThan(Constants.GAME_STARTED)
-            assertThat(Constants.GAME_STARTED).isLessThan(Constants.DIE_FACES)
-            assertThat(Constants.DIE_FACES).isLessThan(Constants.GAME_FINISHED)
+            assertEquals(1, Constants.`game started`)
+            assertThat(Constants.`game not started`).isLessThan(Constants.`game started`)
+            assertThat(Constants.`game started`).isLessThan(Constants.`die faces`)
+            assertThat(Constants.`die faces`).isLessThan(Constants.`game finished`)
         }
     }
 
@@ -35,16 +35,16 @@ class GameIntegrationTest @Autowired constructor(
             .andExpect {
                 status { isOk() }
                 content { contentType(APPLICATION_JSON) }
-                content { jsonPath("DIE_FACES", `is`(Constants.DIE_FACES)) }
-                content { jsonPath("GAME_STARTED", `is`(Constants.GAME_STARTED)) }
-                content { jsonPath("GAME_FINISHED", `is`(Constants.GAME_FINISHED)) }
-                content { jsonPath("GAME_NOT_STARTED", `is`(Constants.GAME_NOT_STARTED)) }
+                content { jsonPath("['die faces']", `is`(Constants.`die faces`)) }
+                content { jsonPath("['game started']", `is`(Constants.`game started`)) }
+                content { jsonPath("['game finished']", `is`(Constants.`game finished`)) }
+                content { jsonPath("['game not started']", `is`(Constants.`game not started`)) }
             }
     }
 
     @Test
     fun `given the game is not started should get one when game is started`() {
-        repo.save(GameState(Constants.GAME_ID, Constants.GAME_NOT_STARTED))
+        repo.save(GameState(Constants.`game id`, Constants.`game not started`))
         mockMvc.get("/start")
             .andExpect {
                 status { isOk() }
@@ -55,7 +55,7 @@ class GameIntegrationTest @Autowired constructor(
 
     @Test
     fun `given the game is in progress should get less than one when game is finished`() {
-        repo.save(GameState(Constants.GAME_ID, Constants.GAME_STARTED))
+        repo.save(GameState(Constants.`game id`, Constants.`game started`))
         mockMvc.get("/finish")
             .andExpect {
                 status { isOk() }
@@ -66,16 +66,16 @@ class GameIntegrationTest @Autowired constructor(
 
     @Test
     fun `given the games is started should move according to die roll when move is made`() {
-        `should move ahead`(Constants.GAME_STARTED)
+        `should move ahead`(Constants.`game started`)
     }
 
     @Test
     fun `given the game is in progress should move according to die roll when move is made`() {
-        `should move ahead`(Constants.GAME_STARTED + (Constants.DIE_FACES / 2))
+        `should move ahead`(Constants.`game started` + (Constants.`die faces` / 2))
     }
 
     private fun `should move ahead`(startingPosition: Int) {
-        repo.save(GameState(Constants.GAME_ID, startingPosition))
+        repo.save(GameState(Constants.`game id`, startingPosition))
         mockMvc.get("/move")
             .andExpect {
                 status { isOk() }
@@ -84,7 +84,7 @@ class GameIntegrationTest @Autowired constructor(
                     jsonPath(
                         "position",
                         both(greaterThan(startingPosition))
-                            .and(lessThanOrEqualTo(startingPosition + Constants.DIE_FACES))
+                            .and(lessThanOrEqualTo(startingPosition + Constants.`die faces`))
                     )
                 }
             }
@@ -92,16 +92,16 @@ class GameIntegrationTest @Autowired constructor(
 
     @Test
     fun `given the game is not started should not move when move is attempted`() {
-        `should not allow the move`(Constants.GAME_NOT_STARTED)
+        `should not allow the move`(Constants.`game not started`)
     }
 
     @Test
     fun `given the game is finished should not move when move is attempted`() {
-        `should not allow the move`(Constants.GAME_FINISHED)
+        `should not allow the move`(Constants.`game finished`)
     }
 
     private fun `should not allow the move`(position: Int) {
-        repo.save(GameState(Constants.GAME_ID, position))
+        repo.save(GameState(Constants.`game id`, position))
         mockMvc.get("/move")
             .andExpect {
                 status { is4xxClientError() }

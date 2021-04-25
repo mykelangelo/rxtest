@@ -1,9 +1,11 @@
 package com.papenko.rxtest
-
+/*
+* const omitted for /const endpoint
+*/
 object Constants {
-    const val DIE_FACES = 6
-    const val GAME_ID = "singleton"
-    const val GAME_STARTED = 1
-    const val GAME_NOT_STARTED = 0
-    const val GAME_FINISHED = 100
+    val `die faces` = 6
+    val `game id` = "singleton"
+    val `game started` = 1
+    val `game not started` = 0
+    val `game finished` = 100
 }
