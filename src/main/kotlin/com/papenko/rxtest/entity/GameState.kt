@@ -1,4 +1,4 @@
-package com.papenko.rxtest
+package com.papenko.rxtest.entity
 
 import org.springframework.data.redis.core.RedisHash
 import org.springframework.data.redis.core.index.Indexed

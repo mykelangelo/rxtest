@@ -1,4 +1,4 @@
-package com.papenko.rxtest
+package com.papenko.rxtest.constant
 /*
 * const omitted for /const endpoint
 */

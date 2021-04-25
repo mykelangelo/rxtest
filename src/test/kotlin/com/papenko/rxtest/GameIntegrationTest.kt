@@ -1,5 +1,8 @@
 package com.papenko.rxtest
 
+import com.papenko.rxtest.constant.Constants
+import com.papenko.rxtest.dao.GameStateRepository
+import com.papenko.rxtest.entity.GameState
 import org.assertj.core.api.Assertions.assertThat
 import org.hamcrest.Matchers.*
 import org.junit.jupiter.api.Assertions.assertEquals
