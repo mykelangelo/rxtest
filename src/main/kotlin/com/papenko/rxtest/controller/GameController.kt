@@ -24,5 +24,5 @@ class GameController @Autowired constructor(val service: GameService) {
     fun finish(): GameState = service.finish()
 
     @ExceptionHandler(IllegalStateException::class)
-    fun handle(): ResponseEntity<Any> = ResponseEntity.badRequest().build()
+    fun handle(): ResponseEntity<String> = ResponseEntity.badRequest().body("use /start first")
 }
