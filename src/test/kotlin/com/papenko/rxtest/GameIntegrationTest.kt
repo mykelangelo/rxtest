@@ -37,11 +37,13 @@ internal class GameIntegrationTest @Autowired constructor(
         mockMvc.get("/const")
             .andExpect {
                 status { isOk() }
-                content { contentType(APPLICATION_JSON) }
-                content { jsonPath("['die faces']", `is`(Constants.`die faces`)) }
-                content { jsonPath("['game started']", `is`(Constants.`game started`)) }
-                content { jsonPath("['game finished']", `is`(Constants.`game finished`)) }
-                content { jsonPath("['game not started']", `is`(Constants.`game not started`)) }
+                content {
+                    contentType(APPLICATION_JSON)
+                    jsonPath("['die faces']", `is`(Constants.`die faces`))
+                    jsonPath("['game started']", `is`(Constants.`game started`))
+                    jsonPath("['game finished']", `is`(Constants.`game finished`))
+                    jsonPath("['game not started']", `is`(Constants.`game not started`))
+                }
             }
     }
 
@@ -51,8 +53,10 @@ internal class GameIntegrationTest @Autowired constructor(
         mockMvc.get("/start")
             .andExpect {
                 status { isOk() }
-                content { contentType(APPLICATION_JSON) }
-                content { json("{\"position\": 1}") }
+                content {
+                    contentType(APPLICATION_JSON)
+                    json("{\"position\": 1}")
+                }
             }
     }
 
@@ -62,8 +66,10 @@ internal class GameIntegrationTest @Autowired constructor(
         mockMvc.get("/finish")
             .andExpect {
                 status { isOk() }
-                content { contentType(APPLICATION_JSON) }
-                content { jsonPath("position", lessThan(1)) }
+                content {
+                    contentType(APPLICATION_JSON)
+                    jsonPath("position", lessThan(1))
+                }
             }
     }
 
@@ -82,16 +88,16 @@ internal class GameIntegrationTest @Autowired constructor(
         mockMvc.get("/move")
             .andExpect {
                 status { isOk() }
-                content { contentType(APPLICATION_JSON) }
                 content {
-                    jsonPath(
-                        "position",
-                        both(greaterThan(startingPosition))
-                            .and(lessThanOrEqualTo(startingPosition + Constants.`die faces`))
-                    )
+                    contentType(APPLICATION_JSON)
+                    jsonPath("position", upToMaxDieFace(startingPosition))
+                    jsonPath("die", upToMaxDieFace(0))
                 }
             }
     }
+
+    private fun upToMaxDieFace(startingPosition: Int) = both(greaterThan(startingPosition))
+        .and(lessThanOrEqualTo(startingPosition + Constants.`die faces`))
 
     @Test
     fun `given the game is not started should not move when move is attempted`() {
