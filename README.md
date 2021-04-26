@@ -1,3 +1,5 @@
+Task: the first feature from the programming Kata at http://agilekatas.co.uk/katas/SnakesAndLadders-Kata
+
 # How to run tests
 1. open root directory in terminal
 2. run `sudo docker-compose up` to run Redis
