@@ -95,19 +95,20 @@ internal class GameIntegrationTest @Autowired constructor(
 
     @Test
     fun `given the game is not started should not move when move is attempted`() {
-        `should not allow the move`(Constants.`game not started`)
+        `should not allow the move and display error message`(Constants.`game not started`)
     }
 
     @Test
     fun `given the game is finished should not move when move is attempted`() {
-        `should not allow the move`(Constants.`game finished`)
+        `should not allow the move and display error message`(Constants.`game finished`)
     }
 
-    private fun `should not allow the move`(position: Int) {
+    private fun `should not allow the move and display error message`(position: Int) {
         repo.save(GameState(Constants.`game id`, position))
         mockMvc.get("/move")
             .andExpect {
                 status { is4xxClientError() }
+                content { string(`is`(not(emptyOrNullString()))) }
             }
     }
 }
