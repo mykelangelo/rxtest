@@ -15,7 +15,7 @@ import org.springframework.boot.test.context.SpringBootTest
 
 @SpringBootTest
 @ExtendWith(MockitoExtension::class)
-internal class GameServiceTest @Autowired constructor(val repo : GameStateRepository){
+internal class GameServiceTest @Autowired constructor(val repo: GameStateRepository) {
     @Test
     fun `given die can only roll two and position is previous to the last should not move when attempted to`() {
         val die = Mockito.mock(DieRollService::class.java)
