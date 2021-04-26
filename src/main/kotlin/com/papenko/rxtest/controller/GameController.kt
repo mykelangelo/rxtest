@@ -1,6 +1,7 @@
 package com.papenko.rxtest.controller
 
 import com.papenko.rxtest.constant.Constants
+import com.papenko.rxtest.dto.MoveDto
 import com.papenko.rxtest.entity.GameState
 import com.papenko.rxtest.service.GameService
 import org.springframework.beans.factory.annotation.Autowired
@@ -18,7 +19,7 @@ class GameController @Autowired constructor(val service: GameService) {
     fun start(): GameState = service.start()
 
     @GetMapping("move")
-    fun move(): GameState = service.move()
+    fun move(): MoveDto = service.move()
 
     @GetMapping("finish")
     fun finish(): GameState = service.finish()
