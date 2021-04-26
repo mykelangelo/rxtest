@@ -17,7 +17,7 @@ import org.springframework.test.web.servlet.get
 
 @SpringBootTest
 @AutoConfigureMockMvc
-class GameIntegrationTest @Autowired constructor(
+internal class GameIntegrationTest @Autowired constructor(
     val mockMvc: MockMvc,
     val repo: GameStateRepository
 ) {

@@ -1,4 +1,5 @@
-Task: the first feature from the programming Kata at http://agilekatas.co.uk/katas/SnakesAndLadders-Kata
+# Task
+The first feature from the programming Kata at http://agilekatas.co.uk/katas/SnakesAndLadders-Kata
 
 # How to run tests
 1. open root directory in terminal
