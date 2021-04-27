@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PutMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
@@ -19,13 +20,13 @@ class GameController @Autowired constructor(
     @GetMapping("const")
     fun const(): Constants = Constants
 
-    @GetMapping("start")
+    @PutMapping("start")
     fun start(): PositionDto = positionMapper.toDto(service.start())
 
-    @GetMapping("move")
+    @PutMapping("move")
     fun move(): MoveDto = service.move()
 
-    @GetMapping("finish")
+    @PutMapping("finish")
     fun finish(): PositionDto = positionMapper.toDto(service.finish())
 
     @ExceptionHandler(IllegalStateException::class)
