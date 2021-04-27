@@ -19,8 +19,6 @@ repositories {
 }
 
 dependencies {
-    implementation("io.reactivex.rxjava3:rxkotlin:3.0.1")
-    implementation ("com.github.jasminb:jsonapi-converter:0.10")
     implementation("org.springframework.boot:spring-boot-starter-data-redis")
     implementation("org.springframework.boot:spring-boot-starter-validation")
     implementation("org.springframework.boot:spring-boot-starter-web")
