@@ -1,9 +1,9 @@
-package com.papenko.rxtest.service
+package com.papenko.game.service
 
-import com.papenko.rxtest.constant.Constants
-import com.papenko.rxtest.dao.GameStateRepository
-import com.papenko.rxtest.entity.GameState
-import com.papenko.rxtest.mapper.MoveMapper
+import com.papenko.game.constant.Constants
+import com.papenko.game.dao.GameStateRepository
+import com.papenko.game.entity.GameState
+import com.papenko.game.mapper.MoveMapper
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test

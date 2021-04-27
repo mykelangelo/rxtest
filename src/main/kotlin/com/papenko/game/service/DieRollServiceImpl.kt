@@ -1,6 +1,6 @@
-package com.papenko.rxtest.service
+package com.papenko.game.service
 
-import com.papenko.rxtest.constant.Constants
+import com.papenko.game.constant.Constants
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import java.util.*

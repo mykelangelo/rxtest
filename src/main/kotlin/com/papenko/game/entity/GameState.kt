@@ -1,4 +1,4 @@
-package com.papenko.rxtest.entity
+package com.papenko.game.entity
 
 import org.springframework.data.redis.core.RedisHash
 import org.springframework.data.redis.core.index.Indexed

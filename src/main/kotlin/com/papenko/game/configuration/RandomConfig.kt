@@ -1,4 +1,4 @@
-package com.papenko.rxtest.configuration
+package com.papenko.game.configuration
 
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration

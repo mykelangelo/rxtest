@@ -52,5 +52,5 @@ $ ./gradlew bootBuildImage
 Then, you can run the app like any other container:
 
 ```
-$ docker run --rm -p 8080:8080 rxtest:0.0.1-SNAPSHOT
+$ docker run --rm -p 8080:8080 game:0.0.1-SNAPSHOT
 ```

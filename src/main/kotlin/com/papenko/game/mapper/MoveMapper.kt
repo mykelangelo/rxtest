@@ -1,7 +1,7 @@
-package com.papenko.rxtest.mapper
+package com.papenko.game.mapper
 
-import com.papenko.rxtest.dto.MoveDto
-import com.papenko.rxtest.entity.GameState
+import com.papenko.game.dto.MoveDto
+import com.papenko.game.entity.GameState
 import org.springframework.stereotype.Component
 
 @Component

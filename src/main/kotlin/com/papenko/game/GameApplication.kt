@@ -1,11 +1,11 @@
-package com.papenko.rxtest
+package com.papenko.game
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class RxtestApplication
+class GameApplication
 
 fun main(args: Array<String>) {
-    runApplication<RxtestApplication>(*args)
+    runApplication<GameApplication>(*args)
 }

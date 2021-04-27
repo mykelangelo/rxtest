@@ -1,10 +1,10 @@
-package com.papenko.rxtest.controller
+package com.papenko.game.controller
 
-import com.papenko.rxtest.constant.Constants
-import com.papenko.rxtest.dto.MoveDto
-import com.papenko.rxtest.dto.PositionDto
-import com.papenko.rxtest.mapper.PositionMapper
-import com.papenko.rxtest.service.GameService
+import com.papenko.game.constant.Constants
+import com.papenko.game.dto.MoveDto
+import com.papenko.game.dto.PositionDto
+import com.papenko.game.mapper.PositionMapper
+import com.papenko.game.service.GameService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.ExceptionHandler

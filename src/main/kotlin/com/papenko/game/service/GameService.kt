@@ -1,10 +1,10 @@
-package com.papenko.rxtest.service
+package com.papenko.game.service
 
-import com.papenko.rxtest.constant.Constants
-import com.papenko.rxtest.dao.GameStateRepository
-import com.papenko.rxtest.dto.MoveDto
-import com.papenko.rxtest.entity.GameState
-import com.papenko.rxtest.mapper.MoveMapper
+import com.papenko.game.constant.Constants
+import com.papenko.game.dao.GameStateRepository
+import com.papenko.game.dto.MoveDto
+import com.papenko.game.entity.GameState
+import com.papenko.game.mapper.MoveMapper
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
