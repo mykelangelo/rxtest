@@ -14,6 +14,7 @@ import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.http.MediaType.APPLICATION_JSON
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.get
+import org.springframework.test.web.servlet.put
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -50,7 +51,7 @@ internal class GameIntegrationTest @Autowired constructor(
     @Test
     fun `given the game is not started should get one when game is started`() {
         repo.save(GameState(Constants.`game id`, Constants.`game not started`))
-        mockMvc.get("/start")
+        mockMvc.put("/start")
             .andExpect {
                 status { isOk() }
                 content {
@@ -63,7 +64,7 @@ internal class GameIntegrationTest @Autowired constructor(
     @Test
     fun `given the game is in progress should get less than one when game is finished`() {
         repo.save(GameState(Constants.`game id`, Constants.`game started`))
-        mockMvc.get("/finish")
+        mockMvc.put("/finish")
             .andExpect {
                 status { isOk() }
                 content {
@@ -85,7 +86,7 @@ internal class GameIntegrationTest @Autowired constructor(
 
     private fun `should move ahead`(startingPosition: Int) {
         repo.save(GameState(Constants.`game id`, startingPosition))
-        mockMvc.get("/move")
+        mockMvc.put("/move")
             .andExpect {
                 status { isOk() }
                 content {
@@ -111,7 +112,7 @@ internal class GameIntegrationTest @Autowired constructor(
 
     private fun `should not allow the move and display error message`(position: Int) {
         repo.save(GameState(Constants.`game id`, position))
-        mockMvc.get("/move")
+        mockMvc.put("/move")
             .andExpect {
                 status { is4xxClientError() }
                 content { string(`is`(not(emptyOrNullString()))) }
